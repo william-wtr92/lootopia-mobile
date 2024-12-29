@@ -1,6 +1,0 @@
-{
-  "**/*.{ts,tsx,js,json,md}": [
-    "pnpm run format:check",
-    "pnpm run lint"
-  ]
-}
