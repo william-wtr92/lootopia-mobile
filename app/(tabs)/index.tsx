@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
-import MapView, { Camera } from 'react-native-maps';
-import * as Location from 'expo-location';
+import * as Location from "expo-location"
+import React, { useEffect, useState } from "react"
+import { View, Text, StyleSheet } from "react-native"
+import MapView, { type Camera } from "react-native-maps"
 
 export default function HomeScreen() {
-  const [camera, setCamera] = useState<Camera | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [camera, setCamera] = useState<Camera | null>(null)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   useEffect(() => {
-    async function getCurrentLocation() {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
+    const getCurrentLocation = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync()
+
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied")
+
+        return
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      const location = await Location.getCurrentPositionAsync({})
       setCamera({
         center: {
           latitude: location.coords.latitude,
@@ -23,20 +25,20 @@ export default function HomeScreen() {
         },
         pitch: 70,
         heading: 0,
-        altitude: 200, 
-        zoom: 18, 
-      });
+        altitude: 200,
+        zoom: 18,
+      })
     }
 
-    getCurrentLocation();
-  }, []);
+    getCurrentLocation()
+  }, [])
 
   if (errorMsg) {
     return (
       <View className="flex-1 justify-center items-center">
         <Text className="text-red-500">{errorMsg}</Text>
       </View>
-    );
+    )
   }
 
   if (!camera) {
@@ -44,20 +46,26 @@ export default function HomeScreen() {
       <View className="flex-1 justify-center items-center">
         <Text>Loading map...</Text>
       </View>
-    );
+    )
   }
 
   return (
     <View className="flex-1">
       <MapView
-        style={{ flex: 1 }}
+        style={styles.map}
         camera={camera}
-        mapType="satellite" 
+        mapType="satellite"
         showsUserLocation={true}
         showsBuildings={true}
         pitchEnabled={true}
         rotateEnabled={true}
       />
     </View>
-  );
+  )
 }
+
+const styles = StyleSheet.create({
+  map: {
+    flex: 1,
+  },
+})

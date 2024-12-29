@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 export default {
   presets: [require("nativewind/preset")],
@@ -7,4 +7,4 @@ export default {
     extend: {},
   },
   plugins: [],
-} satisfies Config;
+} satisfies Config
