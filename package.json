@@ -1,7 +1,9 @@
 {
-  "name": "lootopia-mobile",
-  "main": "expo-router/entry",
+  "name": "@lootopia/mobile",
   "version": "1.0.0",
+  "description": "Lootopia is an innovative platform, structured as an immersive ecosystem, dedicated to the participation and organisation of treasure hunts.",
+  "private": true,
+  "main": "expo-router/entry",
   "scripts": {
     "prepare": "husky",
     "clean": "rm -rf node_modules && rm -rf .expo && rm pnpm-lock.yaml",
@@ -77,5 +79,15 @@
     "tailwindcss": "3.3.2",
     "typescript": "^5.3.3"
   },
-  "private": true
+  "packageManager": "pnpm@9.15.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "NextJS",
+    "TypeScript",
+    "HonoJS"
+  ],
+  "author": "William W., Pascal L., Delphine B.",
+  "license": "All rights reserved"
 }
