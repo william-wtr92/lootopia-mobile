@@ -12,12 +12,9 @@
       "distribution": "internal"
     },
     "production": {
-      "developmentClient": true, 
       "distribution": "internal",
       "autoIncrement": true
     }
   },
-  "submit": {
-    "production": {}
-  }
+  "submit": {}
 }
