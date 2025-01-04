@@ -17,7 +17,7 @@ Lootopia is an innovative platform, structured as an immersive ecosystem, dedica
 - You need to have **PNPM** installed, if not you can install it by following
   the [instructions](https://pnpm.io/installation).
 - Setup ur **.env** file with the following
-  variables -> [See example](https://github.com/william-wtr92/lootopia/blob/main/.env.example).
+  variables -> [See example](https://github.com/william-wtr92/lootopia-mobile/blob/main/.env.example).
 - Install [PostgreSQL](https://www.postgresql.org/download/) & [Redis](https://redis.io/docs/install/install-redis/) on
   your local machine.
 - Install the dependencies by running `pnpm install` at `root`.
