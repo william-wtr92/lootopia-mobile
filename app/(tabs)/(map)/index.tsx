@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { View, Text, StyleSheet } from "react-native"
 import MapView, { type Camera } from "react-native-maps"
 
-export default function HomeScreen() {
+export default function MapScreen() {
   const [camera, setCamera] = useState<Camera | null>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
