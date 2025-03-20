@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "expo-router"
 import { Controller, useForm } from "react-hook-form"
 import { Pressable, Text, TextInput, View } from "react-native"
@@ -6,6 +7,7 @@ import { SC } from "@/core/constants/status"
 import { useToast } from "@/core/providers/ToastProvider"
 import { login } from "@/core/services/auth/login"
 import { useAuthStore } from "@/core/store/useAuthStore"
+import { loginSchema, type LoginSchema } from "@/core/types/auth/login"
 import { routes } from "@/core/utils/routes"
 
 export default function LoginScreen() {
@@ -13,18 +15,16 @@ export default function LoginScreen() {
   const { setAuth } = useAuthStore()
   const router = useRouter()
 
-  const { control, handleSubmit } = useForm<{
-    email: string
-    password: string
-  }>({
+  const { control, handleSubmit } = useForm<LoginSchema>({
     mode: "onBlur",
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   })
 
-  const onSubmit = async (data: { email: string; password: string }) => {
+  const onSubmit = async (data: LoginSchema) => {
     const [status] = await login(data)
 
     if (status !== SC.success.OK) {

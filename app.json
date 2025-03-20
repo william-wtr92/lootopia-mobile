@@ -13,6 +13,7 @@
     "ios": {
       "bundleIdentifier": "com.lootopia.mobile",
       "infoPlist": {
+        "NSCameraUsageDescription": "Nous avons besoin de votre caméra pour scanner la réalité augmentée.",
         "NSLocationWhenInUseUsageDescription": "Nous avons besoin de votre localisation pour afficher votre position sur la carte.",
         "NSLocationAlwaysUsageDescription": "Cette application utilise votre localisation pour des fonctionnalités supplémentaires."
       },
@@ -27,7 +28,9 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION"
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.CAMERA"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
