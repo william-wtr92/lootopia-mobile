@@ -1,9 +1,9 @@
 import { Text } from "react-native"
 
-import ParallaxScrollView from "@/components/ParallaxScrollView"
-import { IconSymbol } from "@/components/ui/IconSymbol"
+import ParallaxScrollView from "@/core/components/expo/ParallaxScrollView"
+import { IconSymbol } from "@/core/components/expo/ui/IconSymbol"
 
-export default function TabTwoScreen() {
+export default function HuntListScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
@@ -15,7 +15,7 @@ export default function TabTwoScreen() {
         />
       }
     >
-      <Text className="font-bold">Page 2 Lootopia</Text>
+      <Text className="font-bold">Hunt List</Text>
     </ParallaxScrollView>
   )
 }

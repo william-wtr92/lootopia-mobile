@@ -2,7 +2,7 @@ import * as React from "react"
 import { Text } from "react-native"
 import renderer from "react-test-renderer"
 
-import { ThemedText } from "../ThemedText"
+import { ThemedText } from "../expo/ThemedText"
 
 it(`renders correctly`, () => {
   const tree = renderer
