@@ -4,7 +4,10 @@
     "slug": "lootopia-mobile",
     "owner": "william-wtr92",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -58,7 +61,8 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

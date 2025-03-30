@@ -1,0 +1,58 @@
+{
+  "Tabs": {
+    "Auth": {
+      "Login": {
+        "title": "Bienvenue sur Lootopia !",
+        "form": {
+          "email": {
+            "placeholder": "Entrez votre email",
+            "error": "Adresse email invalide"
+          },
+          "password": {
+            "label": "Mot de passe",
+            "error": "Entrez un mot de passe"
+          },
+          "submit": "Se connecter"
+        },
+        "success": "Vous êtes connecté !",
+        "errors": {
+          "incorrectPassword": "Mot de passe incorrect",
+          "userNotFound": "Cet email n'existe pas"
+        }
+      }
+    },
+    "Hunts": {
+      "title": "Liste des chasses"
+    },
+    "Users": {
+      "Profile": {
+        "title": "Profil utilisateur",
+        "email": "Email: {{email}}",
+        "birthdate": "Date de naissance: {{birthdate}}",
+        "nickname": "Pseudo: {{nickname}}",
+        "phone": "Téléphone: {{phone}}",
+        "cta": {
+          "logout": "Déconnexion"
+        }
+      }
+    },
+    "Map": {
+      "loading": "Chargement de la carte..."
+    },
+    "NotFound": {
+      "title": "Oups ! Page non trouvée",
+      "message": "La page que vous recherchez n'existe pas.",
+      "cta": {
+        "home": "Aller à l'accueil"
+      }
+    }
+  },
+  "Components": {
+    "Navbar": {
+      "map": "Carte",
+      "hunts": "Chasses",
+      "login": "Connexion",
+      "profile": "Profil"
+    }
+  }
+}

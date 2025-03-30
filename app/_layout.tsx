@@ -12,6 +12,7 @@ import { useEffect } from "react"
 
 import "react-native-reanimated"
 import "./global.css"
+import "@/core/i18n"
 
 import { useColorScheme } from "@/core/hooks/useColorScheme"
 import { ToastProvider } from "@/core/providers/ToastProvider"

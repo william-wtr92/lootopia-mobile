@@ -1,9 +1,12 @@
 import * as Location from "expo-location"
 import React, { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { View, Text, StyleSheet } from "react-native"
 import MapView, { type Camera } from "react-native-maps"
 
 export default function MapScreen() {
+  const { t } = useTranslation()
+
   const [camera, setCamera] = useState<Camera | null>(null)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
@@ -44,7 +47,7 @@ export default function MapScreen() {
   if (!camera) {
     return (
       <View className="flex-1 justify-center items-center">
-        <Text>Loading map...</Text>
+        <Text>{t("Tabs.Map.loading")}</Text>
       </View>
     )
   }

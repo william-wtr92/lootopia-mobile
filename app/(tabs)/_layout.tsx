@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { Tabs } from "expo-router"
 import { LogIn, Map, Swords, User } from "lucide-react-native"
 import React, { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { Platform } from "react-native"
 
 import { HapticTab } from "@/core/components/expo/HapticTab"
@@ -13,6 +14,8 @@ import { useAuthStore } from "@/core/store/useAuthStore"
 import { routes } from "@/core/utils/routes"
 
 export default function TabLayout() {
+  const { t } = useTranslation()
+
   const colorScheme = useColorScheme()
   const { isAuthenticated, checkAuth } = useAuthStore()
 
@@ -47,14 +50,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(map)/index"
         options={{
-          title: "Map",
+          title: t("Components.Navbar.map"),
           tabBarIcon: ({ color }) => <Map size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="(hunts)/list"
         options={{
-          title: "Hunts",
+          title: t("Components.Navbar.hunts"),
           tabBarIcon: ({ color }) => <Swords size={28} color={color} />,
         }}
       />
@@ -63,7 +66,7 @@ export default function TabLayout() {
         name="(auth)/login"
         options={{
           href: !isAuthenticated ? routes.app.login : null,
-          title: "Login",
+          title: t("Components.Navbar.login"),
           tabBarIcon: ({ color }) => <LogIn size={28} color={color} />,
         }}
       />
@@ -73,7 +76,7 @@ export default function TabLayout() {
         options={{
           href:
             isAuthenticated && isUserLoggedIn ? routes.app.users.profile : null,
-          title: "Profile",
+          title: t("Components.Navbar.profile"),
           tabBarIcon: ({ color }) => <User size={28} color={color} />,
         }}
       />
