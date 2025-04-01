@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "expo-router"
 import { Controller, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { Pressable, Text, TextInput, View } from "react-native"
 
 import { SC } from "@/core/constants/status"
@@ -11,6 +12,8 @@ import { loginSchema, type LoginSchema } from "@/core/types/auth/login"
 import { routes } from "@/core/utils/routes"
 
 export default function LoginScreen() {
+  const { t } = useTranslation()
+
   const { toast } = useToast()
   const { setAuth } = useAuthStore()
   const router = useRouter()
@@ -25,15 +28,22 @@ export default function LoginScreen() {
   })
 
   const onSubmit = async (data: LoginSchema) => {
-    const [status] = await login(data)
+    const [status, key] = await login(data)
 
     if (status !== SC.success.OK) {
-      toast({ type: "error", message: "Invalid credentials" })
+      toast({
+        type: "error",
+        message: t(`Tabs.Auth.Login.errors.${key}`),
+      })
 
       return
     }
 
-    toast({ type: "success", message: "You are now logged in" })
+    toast({
+      type: "success",
+      message: t("Tabs.Auth.Login.success"),
+    })
+
     setAuth(true)
     router.push(routes.app.hunts)
   }
@@ -41,7 +51,7 @@ export default function LoginScreen() {
   return (
     <View className="flex-1 mx-auto justify-center gap-4 w-3/4 p-4">
       <Text className="font-bold text-3xl text-center">
-        Bienvenue sur Lootpia !
+        {t("Tabs.Auth.Login.title")}
       </Text>
       <Controller
         control={control}
@@ -51,12 +61,12 @@ export default function LoginScreen() {
             onChangeText={onChange}
             onBlur={onBlur}
             value={value}
-            placeholder="Email"
+            placeholder={t("Tabs.Auth.Login.form.email.placeholder")}
             autoCapitalize="none"
           />
         )}
         name="email"
-        rules={{ required: "You must enter your email" }}
+        rules={{ required: t("Tabs.Auth.Login.form.email.error") }}
       />
       <Controller
         control={control}
@@ -66,20 +76,22 @@ export default function LoginScreen() {
             onChangeText={onChange}
             onBlur={onBlur}
             value={value}
-            placeholder="Password"
+            placeholder={t("Tabs.Auth.Login.form.password.placeholder")}
             secureTextEntry={true}
             autoCapitalize="none"
           />
         )}
         name="password"
-        rules={{ required: "You must enter your password" }}
+        rules={{ required: t("Tabs.Auth.Login.form.password.error") }}
       />
 
       <Pressable
         className="bg-blue-500 rounded-md p-4 w-2/3 items-center active:bg-blue-700 mx-auto"
         onPress={handleSubmit(onSubmit)}
       >
-        <Text className="text-white font-bold text-lg">Se connecter</Text>
+        <Text className="text-white font-bold text-lg">
+          {t("Tabs.Auth.Login.form.submit")}
+        </Text>
       </Pressable>
     </View>
   )

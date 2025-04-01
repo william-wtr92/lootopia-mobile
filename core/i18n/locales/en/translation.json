@@ -1,0 +1,58 @@
+{
+  "Tabs": {
+    "Auth": {
+      "Login": {
+        "title": "Welcome to Lootopia!",
+        "form": {
+          "email": {
+            "placeholder": "Enter your email",
+            "error": "Invalid email address"
+          },
+          "password": {
+            "placeholder": "Enter your password",
+            "error": "Enter a password"
+          },
+          "submit": "Login"
+        },
+        "success": "You are connected!",
+        "errors": {
+          "incorrectPassword": "Incorrect password",
+          "userNotFound": "This email does not exist"
+        }
+      }
+    },
+    "Hunts": {
+      "title": "Hunt List"
+    },
+    "Users": {
+      "Profile": {
+        "title": "User Profile",
+        "email": "Email: {{email}}",
+        "birthdate": "Birthdate: {{birthdate}}",
+        "nickname": "Nickname: {{nickname}}",
+        "phone": "Phone: {{phone}}",
+        "cta": {
+          "logout": "Logout"
+        }
+      }
+    },
+    "Map": {
+      "loading": "Loading map..."
+    },
+    "NotFound": {
+      "title": "Oops! Page Not Found",
+      "message": "The page you are looking for does not exist.",
+      "cta": {
+        "home": "Go to Home"
+      }
+    }
+  },
+  "Components": {
+    "Navbar": {
+      "map": "Map",
+      "hunts": "Hunts",
+      "login": "Login",
+      "profile": "Profile"
+    }
+  }
+}
