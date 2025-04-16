@@ -11,6 +11,7 @@ import { Colors } from "@/core/constants/Colors"
 import { useColorScheme } from "@/core/hooks/useColorScheme"
 import { getUserLoggedIn } from "@/core/services/users/getUserLoggedIn"
 import { useAuthStore } from "@/core/store/useAuthStore"
+import { useHuntStore } from "@/core/store/useHuntStore"
 import { routes } from "@/core/utils/routes"
 
 export default function TabLayout() {
@@ -18,6 +19,7 @@ export default function TabLayout() {
 
   const colorScheme = useColorScheme()
   const { isAuthenticated, checkAuth } = useAuthStore()
+  const { huntId } = useHuntStore()
 
   useEffect(() => {
     checkAuth()
@@ -30,6 +32,7 @@ export default function TabLayout() {
   })
 
   const isUserLoggedIn = user != null
+  const canAccessMap = isAuthenticated && huntId !== null
 
   return (
     <Tabs
@@ -48,17 +51,20 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="(map)/index"
-        options={{
-          title: t("Components.Navbar.map"),
-          tabBarIcon: ({ color }) => <Map size={28} color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="(hunts)/list"
         options={{
+          href: isAuthenticated ? routes.app.hunts : null,
           title: t("Components.Navbar.hunts"),
           tabBarIcon: ({ color }) => <Swords size={28} color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="(map)/index"
+        options={{
+          href: canAccessMap ? routes.app.map : null,
+          title: t("Components.Navbar.map"),
+          tabBarIcon: ({ color }) => <Map size={28} color={color} />,
         }}
       />
 

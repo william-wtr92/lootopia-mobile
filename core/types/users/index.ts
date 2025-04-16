@@ -9,6 +9,7 @@ export const userSchema = z.object({
   avatar: z.string().nullable().optional(),
   active: z.boolean().default(true),
   role: z.enum(["user", "admin"]).default("user"),
+  crowns: z.number().default(0),
 })
 
 export type UserSchema = z.infer<typeof userSchema>

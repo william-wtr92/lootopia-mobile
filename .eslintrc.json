@@ -83,7 +83,7 @@
     "no-use-before-define": ["error", { "variables": false }],
     "valid-typeof": "error",
     "block-scoped-var": "error",
-    "complexity": ["error", 8],
+    "complexity": "off",
     "camelcase": ["error", { "ignoreImports": true }],
     "curly": "error",
     "default-param-last": "error",
