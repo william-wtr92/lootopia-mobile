@@ -12,6 +12,7 @@ import HuntBadge from "@/core/components/app/features/hunts/HuntBadge"
 import CrownsBadge from "@/core/components/app/features/users/CrownBadge"
 import { SC } from "@/core/constants/status"
 import { useCurrentLocation } from "@/core/hooks/app/useCurrentLocation"
+import { useHintCountdown } from "@/core/hooks/app/useHintCountdown"
 import { useToast } from "@/core/providers/ToastProvider"
 import { dig } from "@/core/services/hunts/dig"
 import { hint } from "@/core/services/hunts/hint"
@@ -24,6 +25,7 @@ export default function MapScreen() {
   const { toast } = useToast()
   const { camera, errorMsg } = useCurrentLocation()
   const { huntId } = useHuntStore()
+  const { refreshHintStatus } = useHintCountdown({ huntId: huntId! })
   const qc = useQueryClient()
 
   const [chestVisible, setChestVisible] = useState(false)
@@ -67,6 +69,8 @@ export default function MapScreen() {
     if (rewards) {
       setPendingReward(rewards)
     }
+
+    qc.invalidateQueries({ queryKey: ["user"] })
   }
 
   const handleHint = async () => {
@@ -95,6 +99,8 @@ export default function MapScreen() {
 
       return
     }
+
+    refreshHintStatus()
 
     toast({
       type: "default",

@@ -17,7 +17,7 @@ const HuntBadge = () => {
       <View className="ml-2">
         <Text
           numberOfLines={1}
-          className="text-2xl font-semibold text-primary max-w-32"
+          className="text-xl font-semibold text-primary max-w-32"
         >
           {huntName}
         </Text>

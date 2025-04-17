@@ -7,6 +7,12 @@ import { getUserLoggedIn } from "@/core/services/users/getUserLoggedIn"
 import { useAuthStore } from "@/core/store/useAuthStore"
 import type { UserSchema } from "@/core/types/users"
 import { config } from "@/core/utils/config"
+import {
+  defaultLevel,
+  defaultXP,
+  nextLevelXP,
+  xpProgress,
+} from "@/core/utils/helpers/levels"
 import { routes } from "@/core/utils/routes"
 
 export default function ProfileScreen() {
@@ -36,6 +42,11 @@ export default function ProfileScreen() {
     return <Redirect href={routes.app.login} />
   }
 
+  const currentLevel = userLoggedIn.progression.level ?? defaultLevel
+  const currentXP = userLoggedIn.progression.experience ?? defaultXP
+  const nextXP = nextLevelXP(currentLevel)
+  const progressValue = xpProgress(currentXP, currentLevel)
+
   return (
     <View className="flex-1 bg-white dark:bg-neutral-900 px-6">
       <View className="flex-1 justify-center">
@@ -62,6 +73,30 @@ export default function ProfileScreen() {
             {userLoggedIn.email}
           </Text>
         </View>
+
+        {userLoggedIn.progression && (
+          <View className="bg-secondary/20 dark:bg-primary p-4 rounded-xl mb-6">
+            <Text className="text-sm text-secondary dark:text-primaryBg font-semibold mb-1">
+              {t("Tabs.Users.Profile.progression.level", {
+                level: userLoggedIn.progression.level,
+              })}
+            </Text>
+            <View className="w-full h-3 bg-secondary/30 dark:bg-primary/90 rounded-full overflow-hidden mb-1">
+              <View
+                className="h-full bg-secondary"
+                style={{
+                  width: `${progressValue}%`,
+                }}
+              />
+            </View>
+            <Text className="text-xs text-secondary dark:text-secondary/40 text-right">
+              {t("Tabs.Users.Profile.progression.experience", {
+                xp: userLoggedIn.progression.experience,
+                nextLevel: nextXP,
+              })}
+            </Text>
+          </View>
+        )}
 
         <View className="gap-4 mb-10">
           <ProfileField

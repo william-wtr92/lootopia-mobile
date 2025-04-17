@@ -29,7 +29,9 @@ apiClient.interceptors.response.use(
     return response
   },
   async (error) => {
-    if (error.response?.status === SC.errors.UNAUTHORIZED) {
+    if (
+      error.response?.status === (SC.errors.UNAUTHORIZED || SC.errors.FORBIDDEN)
+    ) {
       const { logout } = useAuthStore.getState()
       const { clearHuntId } = useHuntStore.getState()
 

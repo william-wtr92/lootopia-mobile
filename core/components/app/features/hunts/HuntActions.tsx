@@ -1,10 +1,8 @@
-import { useQuery } from "@tanstack/react-query"
 import { Crown, Lightbulb, Pickaxe } from "lucide-react-native"
 import { useTranslation } from "react-i18next"
 import { View, Text, TouchableOpacity } from "react-native"
 
 import { useHintCountdown } from "@/core/hooks/app/useHintCountdown"
-import { getHintCount } from "@/core/services/hunts/getHintCount"
 import { useHuntStore } from "@/core/store/useHuntStore"
 
 type Props = {
@@ -17,13 +15,7 @@ const HuntActions = ({ onDig, onHint }: Props) => {
   const { huntId } = useHuntStore()
   const { cooldown, count } = useHintCountdown({ huntId: huntId! })
 
-  const { data: hintStatus } = useQuery({
-    queryKey: ["hintCount", huntId],
-    queryFn: () => getHintCount({ huntId: huntId! }),
-    enabled: huntId !== null,
-  })
-
-  if (!huntId || !hintStatus) {
+  if (!huntId) {
     return null
   }
 
@@ -45,7 +37,7 @@ const HuntActions = ({ onDig, onHint }: Props) => {
         <TouchableOpacity
           onPress={onHint}
           className={`flex-1 px-6 py-2 rounded-full flex-col items-center justify-center gap-1 ${
-            disabled ? "bg-gray-300" : "bg-violet-100"
+            disabled ? "bg-primaryBg/70" : "bg-primaryBg"
           }`}
           disabled={disabled}
         >

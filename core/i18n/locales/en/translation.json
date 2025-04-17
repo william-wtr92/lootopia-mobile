@@ -30,6 +30,10 @@
       "Profile": {
         "title": "User Profile",
         "email": "Email:",
+        "progression": {
+          "level": "Level {{level}}",
+          "experience": "{{xp}} / {{nextLevel}} XP"
+        },
         "birthdate": "Birthdate:",
         "nickname": "Nickname:",
         "phone": "Phone:",

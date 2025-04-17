@@ -1,48 +1,50 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 
 import { getHintCount } from "@/core/services/hunts/getHintCount"
 import type { HuntParams } from "@/core/types/hunts"
 
 export const useHintCountdown = (param?: HuntParams | null) => {
+  const queryClient = useQueryClient()
   const [cooldown, setCooldown] = useState<number | null>(null)
   const [count, setCount] = useState<number>(0)
 
+  const { data, refetch } = useQuery({
+    queryKey: ["hintCount", param?.huntId],
+    queryFn: () => getHintCount({ huntId: param!.huntId }),
+    enabled: !!param?.huntId,
+    refetchOnWindowFocus: false,
+    refetchInterval: false,
+  })
+
   useEffect(() => {
-    if (!param?.huntId) {
+    if (!data) {
       return
     }
 
-    let interval: NodeJS.Timeout
+    setCooldown(data.cooldown)
+    setCount(data.count)
 
-    const fetchOnce = async () => {
-      const result = await getHintCount({ huntId: param?.huntId })
+    if (data.cooldown > 0) {
+      const interval = setInterval(() => {
+        setCooldown((prev) => {
+          if (!prev || prev <= 1) {
+            clearInterval(interval)
 
-      if (!result) {
-        return
-      }
+            return 0
+          }
 
-      setCooldown(result.cooldown)
-      setCount(result.count)
+          return prev - 1
+        })
+      }, 1000)
 
-      if (result.cooldown > 0) {
-        interval = setInterval(() => {
-          setCooldown((prev) => {
-            if (!prev || prev <= 1) {
-              clearInterval(interval)
-
-              return 0
-            }
-
-            return prev - 1
-          })
-        }, 1000)
-      }
+      return () => clearInterval(interval)
     }
+  }, [data])
 
-    fetchOnce()
+  const refreshHintStatus = () => {
+    queryClient.invalidateQueries({ queryKey: ["hintCount", param?.huntId] })
+  }
 
-    return () => clearInterval(interval)
-  }, [param])
-
-  return { cooldown, count }
+  return { cooldown, count, refreshHintStatus, refetch }
 }
