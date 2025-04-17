@@ -21,7 +21,7 @@ export const xpProgress = (
   currentLevel: number | undefined
 ) => {
   if (typeof currentLevel !== "number") {
-    return 0
+    return defaultXP
   }
 
   return Math.min((currentXP / xpRequired(currentLevel + 1)) * 100, 100)
