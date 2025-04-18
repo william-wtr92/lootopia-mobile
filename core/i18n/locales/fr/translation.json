@@ -58,7 +58,7 @@
         "digging": {
           "userNotFound": "Vous n'êtes pas autorisé à effectuer cette action",
           "waitBeforeDigging": "Vous devez attendre 2 minutes avant de creuser à nouveau",
-          "supiciousMovement": "Mouvement suspect détecté, veuillez réessayer plus tard",
+          "suspiciousMovement": "Mouvement suspect détecté, veuillez réessayer plus tard",
           "huntNotFound": "Chasse introuvable",
           "userIsNotParticipant": "Vous n'êtes pas un participant de cette chasse",
           "noChestFoundInArea": "Aucun coffre trouvé dans cette zone",

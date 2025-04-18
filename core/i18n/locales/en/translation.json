@@ -58,7 +58,7 @@
         "digging": {
           "userNotFound": "You are not authorized to perform this action",
           "waitBeforeDigging": "You need to wait 2 minutes before digging again",
-          "supiciousMovement": "Suspicious movement detected, please try again later",
+          "suspiciousMovement": "Suspicious movement detected, please try again later",
           "huntNotFound": "Hunt not found",
           "userIsNotParticipant": "You are not a participant in this hunt",
           "noChestFoundInArea": "No chest found in this area",
