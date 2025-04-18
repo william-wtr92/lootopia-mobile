@@ -1,10 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "expo-router"
+import { useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Pressable, Text, TextInput, View } from "react-native"
 
+import MfaVerificationModal from "@/core/components/app/features/users/auth/MfaVerificationModal"
 import { SC } from "@/core/constants/status"
 import { useToast } from "@/core/providers/ToastProvider"
 import { login } from "@/core/services/auth/login"
@@ -20,6 +22,9 @@ export default function LoginScreen() {
   const router = useRouter()
   const qc = useQueryClient()
 
+  const [showMfa, setShowMfa] = useState(false)
+  const [sessionId, setSessionId] = useState<string | null>(null)
+
   const { control, handleSubmit } = useForm<LoginSchema>({
     mode: "onBlur",
     resolver: zodResolver(loginSchema),
@@ -30,13 +35,28 @@ export default function LoginScreen() {
   })
 
   const onSubmit = async (data: LoginSchema) => {
-    const [status, key] = await login(data)
+    const [status, result] = await login(data)
 
     if (status !== SC.success.OK) {
+      const key = typeof result === "string" ? result : result.key
+
       toast({
         type: "error",
         message: t(`Tabs.Auth.Login.errors.${key}`),
       })
+
+      return
+    }
+
+    if (
+      typeof result === "object" &&
+      "mfaRequired" in result &&
+      "sessionId" in result &&
+      result.mfaRequired &&
+      result.sessionId
+    ) {
+      setSessionId(result.sessionId)
+      setShowMfa(true)
 
       return
     }
@@ -99,6 +119,12 @@ export default function LoginScreen() {
           </Text>
         </Pressable>
       </View>
+
+      <MfaVerificationModal
+        visible={showMfa}
+        onClose={() => setShowMfa(false)}
+        sessionId={sessionId!}
+      />
     </View>
   )
 }

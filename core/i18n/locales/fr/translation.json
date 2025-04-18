@@ -89,6 +89,21 @@
       "login": "Connexion",
       "profile": "Profil"
     },
+    "Auth": {
+      "MfaVerificationModal": {
+        "title": "Authentification à deux facteurs",
+        "description": "Veuillez entrer le code de votre application d'authentification.",
+        "cta": {
+          "submit": "Vérifier"
+        },
+        "errors": {
+          "mfaSessionExpired": "Votre session a expiré. Veuillez vous reconnecter",
+          "userNotFound": "Vous n'êtes pas autorisé à effectuer cette action",
+          "mfaInvalidToken": "Jeton invalide. Veuillez vérifier votre application d'authentification et réessayer"
+        },
+        "success": "Vous êtes connecté !"
+      }
+    },
     "Artifacts": {
       "ArtifactModal": {
         "title": "Artefact gagné 🎉 !",

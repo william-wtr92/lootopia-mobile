@@ -6,3 +6,10 @@ export const loginSchema = z.object({
 })
 
 export type LoginSchema = z.infer<typeof loginSchema>
+
+export type LoginResponse = {
+  mfaRequired?: boolean
+  sessionId?: string
+  key: string
+  status: number
+}

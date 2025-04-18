@@ -89,6 +89,21 @@
       "login": "Login",
       "profile": "Profile"
     },
+    "Auth": {
+      "MfaVerificationModal": {
+        "title": "Two Factor Authentication",
+        "description": "Please enter the code on your authenticator app.",
+        "cta": {
+          "submit": "Verify"
+        },
+        "errors": {
+          "mfaSessionExpired": "Your session has expired. Please log in again",
+          "userNotFound": "You are not authorized to perform this action",
+          "mfaInvalidToken": "Invalid token. Please check your authenticator app and try again"
+        },
+        "success": "You are connected!"
+      }
+    },
     "Artifacts": {
       "ArtifactModal": {
         "title": "Artifact Earned 🎉!",

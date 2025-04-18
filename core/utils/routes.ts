@@ -12,6 +12,7 @@ export const routes = {
   api: {
     auth: {
       login: "/auth/login",
+      mfa: "/auth/login/mfa",
     },
     users: {
       me: "/users/me",
