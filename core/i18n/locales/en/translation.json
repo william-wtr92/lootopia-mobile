@@ -22,22 +22,57 @@
       }
     },
     "Hunts": {
-      "title": "Hunt List"
+      "title": "My Hunts List",
+      "loading": "Loading your hunts...",
+      "search": "Search for a hunt..."
     },
     "Users": {
       "Profile": {
         "title": "User Profile",
-        "email": "Email: {{email}}",
-        "birthdate": "Birthdate: {{birthdate}}",
-        "nickname": "Nickname: {{nickname}}",
-        "phone": "Phone: {{phone}}",
+        "email": "Email:",
+        "progression": {
+          "level": "Level {{level}}",
+          "experience": "{{xp}} / {{nextLevel}} XP"
+        },
+        "birthdate": "Birthdate:",
+        "nickname": "Nickname:",
+        "phone": "Phone:",
+        "role": {
+          "admin": "Admin",
+          "user": "User"
+        },
         "cta": {
           "logout": "Logout"
         }
       }
     },
     "Map": {
-      "loading": "Loading map..."
+      "loading": "Loading map...",
+      "success": {
+        "hint": "You are between {{minDistance}} and {{maxDistance}} meters from a chest",
+        "crowns": "You won {{amount}} crowns! 🎉",
+        "artifact": "You found an artifact! 🎉"
+      },
+      "errors": {
+        "notInHunt": "You are not in a hunt",
+        "digging": {
+          "userNotFound": "You are not authorized to perform this action",
+          "waitBeforeDigging": "You need to wait 2 minutes before digging again",
+          "suspiciousMovement": "Suspicious movement detected, please try again later",
+          "huntNotFound": "Hunt not found",
+          "userIsNotParticipant": "You are not a participant in this hunt",
+          "noChestFoundInArea": "No chest found in this area",
+          "chestAlreadyDigged": "This chest has already been dug",
+          "chestIssueReportToAdmin": "This chest has an issue, please report it to the admin."
+        },
+        "hint": {
+          "userNotFound": "You are not authorized to perform this action",
+          "waitBeforeRequestingHint": "You need to wait 10 minutes before requesting a new hint",
+          "huntNotFound": "Hunt not found",
+          "notEnoughCrowns": "You don't have enough crowns to request a hint",
+          "noHintFound": "No hint found"
+        }
+      }
     },
     "NotFound": {
       "title": "Oops! Page Not Found",
@@ -53,6 +88,50 @@
       "hunts": "Hunts",
       "login": "Login",
       "profile": "Profile"
+    },
+    "Auth": {
+      "MfaVerificationModal": {
+        "title": "Two Factor Authentication",
+        "description": "Please enter the code on your authenticator app.",
+        "cta": {
+          "submit": "Verify"
+        },
+        "errors": {
+          "mfaSessionExpired": "Your session has expired. Please log in again",
+          "userNotFound": "You are not authorized to perform this action",
+          "mfaInvalidToken": "Invalid token. Please check your authenticator app and try again"
+        },
+        "success": "You are connected!"
+      }
+    },
+    "Artifacts": {
+      "ArtifactModal": {
+        "title": "Artifact Earned 🎉!",
+        "cta": {
+          "close": "Close"
+        }
+      }
+    },
+    "Hunts": {
+      "HuntActions": {
+        "actions": {
+          "dig": "Dig"
+        },
+        "cooldown": "{{time}} s",
+        "cost": "5",
+        "hintCount": "Hint ({{count}}/3)"
+      },
+      "HuntStatusSelect": {
+        "options": {
+          "started": "In Progress",
+          "upcoming": "Upcoming"
+        }
+      }
+    }
+  },
+  "Hooks": {
+    "useLocation": {
+      "denied": "Permission to access location was denied"
     }
   }
 }

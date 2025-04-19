@@ -1,8 +1,13 @@
 import axios from "axios"
+import { router } from "expo-router"
 
 import { config } from "./config"
+import { routes } from "./routes"
 import { getSecuredValue, setSecuredValue } from "./secure"
 import { securedKeys } from "./secure/keys"
+import { SC } from "@/core/constants/status"
+import { useAuthStore } from "@/core/store/useAuthStore"
+import { useHuntStore } from "@/core/store/useHuntStore"
 
 export const apiClient = axios.create({
   baseURL: config.api.baseUrl,
@@ -23,7 +28,21 @@ apiClient.interceptors.response.use(
 
     return response
   },
-  (error) => Promise.reject(error)
+  async (error) => {
+    if (
+      error.response?.status === (SC.errors.UNAUTHORIZED || SC.errors.FORBIDDEN)
+    ) {
+      const { logout } = useAuthStore.getState()
+      const { clearHuntId } = useHuntStore.getState()
+
+      await logout()
+      clearHuntId()
+
+      router.replace(routes.app.login)
+    }
+
+    return Promise.reject(error)
+  }
 )
 
 apiClient.interceptors.request.use(

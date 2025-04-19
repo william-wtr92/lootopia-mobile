@@ -22,22 +22,57 @@
       }
     },
     "Hunts": {
-      "title": "Liste des chasses"
+      "title": "Liste de mes chasses",
+      "loading": "Chargement de vos chasses...",
+      "search": "Rechercher une chasse..."
     },
     "Users": {
       "Profile": {
         "title": "Profil utilisateur",
-        "email": "Email: {{email}}",
-        "birthdate": "Date de naissance: {{birthdate}}",
-        "nickname": "Pseudo: {{nickname}}",
-        "phone": "Téléphone: {{phone}}",
+        "email": "Email:",
+        "progression": {
+          "level": "Niveau {{level}}",
+          "experience": "{{xp}} / {{nextLevel}} XP"
+        },
+        "birthdate": "Date de naissance:",
+        "nickname": "Pseudo:",
+        "phone": "Téléphone:",
+        "role": {
+          "admin": "Administrateur",
+          "user": "Utilisateur"
+        },
         "cta": {
           "logout": "Déconnexion"
         }
       }
     },
     "Map": {
-      "loading": "Chargement de la carte..."
+      "loading": "Chargement de la carte...",
+      "success": {
+        "hint": "Vous êtes entre {{minDistance}} et {{maxDistance}} mètres d'un coffre",
+        "crowns": "Vous avez gagné {{amount}} couronnes ! 🎉",
+        "artifact": "Vous avez trouvé un artefact ! 🎉"
+      },
+      "errors": {
+        "notInHunt": "Vous n'êtes pas dans une chasse",
+        "digging": {
+          "userNotFound": "Vous n'êtes pas autorisé à effectuer cette action",
+          "waitBeforeDigging": "Vous devez attendre 2 minutes avant de creuser à nouveau",
+          "suspiciousMovement": "Mouvement suspect détecté, veuillez réessayer plus tard",
+          "huntNotFound": "Chasse introuvable",
+          "userIsNotParticipant": "Vous n'êtes pas un participant de cette chasse",
+          "noChestFoundInArea": "Aucun coffre trouvé dans cette zone",
+          "chestAlreadyDigged": "Ce coffre a déjà été creusé",
+          "chestIssueReportToAdmin": "Ce coffre a un problème, veuillez le signaler à l'administrateur."
+        },
+        "hint": {
+          "userNotFound": "Vous n'êtes pas autorisé à effectuer cette action",
+          "waitBeforeRequestingHint": "Vous devez attendre 10 minutes avant de demander un nouvel indice",
+          "huntNotFound": "Chasse introuvable",
+          "notEnoughCrowns": "Vous n'avez pas assez de couronnes pour demander un indice",
+          "noHintFound": "Aucun indice trouvé"
+        }
+      }
     },
     "NotFound": {
       "title": "Oups ! Page non trouvée",
@@ -53,6 +88,50 @@
       "hunts": "Chasses",
       "login": "Connexion",
       "profile": "Profil"
+    },
+    "Auth": {
+      "MfaVerificationModal": {
+        "title": "Authentification à deux facteurs",
+        "description": "Veuillez entrer le code de votre application d'authentification.",
+        "cta": {
+          "submit": "Vérifier"
+        },
+        "errors": {
+          "mfaSessionExpired": "Votre session a expiré. Veuillez vous reconnecter",
+          "userNotFound": "Vous n'êtes pas autorisé à effectuer cette action",
+          "mfaInvalidToken": "Jeton invalide. Veuillez vérifier votre application d'authentification et réessayer"
+        },
+        "success": "Vous êtes connecté !"
+      }
+    },
+    "Artifacts": {
+      "ArtifactModal": {
+        "title": "Artefact gagné 🎉 !",
+        "cta": {
+          "close": "Fermer"
+        }
+      }
+    },
+    "Hunts": {
+      "HuntActions": {
+        "actions": {
+          "dig": "Creuser"
+        },
+        "cooldown": "{{time}} s",
+        "cost": "5",
+        "hintCount": "Indice ({{count}}/3)"
+      },
+      "HuntStatusSelect": {
+        "options": {
+          "started": "En cours",
+          "upcoming": "À venir"
+        }
+      }
+    }
+  },
+  "Hooks": {
+    "useLocation": {
+      "denied": "La permission d'accéder à la localisation a été refusée"
     }
   }
 }
