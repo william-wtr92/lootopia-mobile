@@ -28,8 +28,8 @@ const HuntActions = ({ onDig, onHint }: Props) => {
           onPress={onDig}
           className="flex-1 bg-accent px-6 py-2 rounded-full flex-col items-center justify-center gap-1"
         >
-          <Pickaxe color="white" size={20} />
-          <Text className="text-white font-semibold text-md">
+          <Pickaxe color="#4A0E4E" size={20} />
+          <Text className="text-primary font-semibold text-md">
             {t("Components.Hunts.HuntActions.actions.dig")}
           </Text>
         </TouchableOpacity>
@@ -50,7 +50,7 @@ const HuntActions = ({ onDig, onHint }: Props) => {
             </Text>
           ) : count >= 3 ? (
             <View className="flex-row items-center gap-1">
-              <Crown color="gold" size={14} />
+              <Crown color="#4A0E4E" size={14} />
               <Text className="text-primary font-semibold text-md">
                 {t("Components.Hunts.HuntActions.cost")}
               </Text>

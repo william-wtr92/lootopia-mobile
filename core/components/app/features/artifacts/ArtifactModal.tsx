@@ -1,5 +1,6 @@
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Modal, Pressable, Text, View } from "react-native"
+import { ActivityIndicator, Modal, Pressable, Text, View } from "react-native"
 import { WebView } from "react-native-webview"
 
 import { config } from "@/core/utils/config"
@@ -14,6 +15,12 @@ type Props = {
 const ArtifactModal = ({ visible, onClose, artifactId }: Props) => {
   const { t, i18n } = useTranslation()
   const locale = i18n.language
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  const handleTriggerLoading = (bool: boolean) => {
+    setIsLoading(bool)
+  }
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
@@ -32,11 +39,21 @@ const ArtifactModal = ({ visible, onClose, artifactId }: Props) => {
           </Pressable>
         </View>
 
-        <WebView
-          source={{
-            uri: `${config.webviewUrl}/${locale}/${routes.webview.artifactsViewer(artifactId)}`,
-          }}
-        />
+        <View className="flex-1 relative">
+          {isLoading && (
+            <View className="absolute inset-0 z-10 flex items-center justify-center bg-white/50">
+              <ActivityIndicator size="large" color="#000" />
+            </View>
+          )}
+
+          <WebView
+            source={{
+              uri: `${config.webviewUrl}/${locale}/${routes.webview.artifactsViewer(artifactId)}`,
+            }}
+            onLoadStart={() => handleTriggerLoading(true)}
+            onLoadEnd={() => handleTriggerLoading(false)}
+          />
+        </View>
       </View>
     </Modal>
   )
