@@ -138,13 +138,20 @@ export default function HuntListScreen() {
               className={`${containerStyle} m-2 p-4 rounded-2xl shadow-sm opacity-${started ? "100" : "60"}`}
             >
               <View className="flex-row items-center justify-between">
-                <Text className={`text-xl font-bold ${textColor}`}>
+                <Text
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  className={`text-xl font-bold ${textColor} max-w-[70%]`}
+                >
                   {item.hunts.name}
                 </Text>
+
                 <Text
                   className={`text-xs text-primary/80 font-semibold ${badgeColor} rounded-full px-2 py-1`}
                 >
-                  {started ? "Commencée" : "À venir"}
+                  {started
+                    ? t("Tabs.Hunts.info.started")
+                    : t("Tabs.Hunts.info.commingSoon")}
                 </Text>
               </View>
 

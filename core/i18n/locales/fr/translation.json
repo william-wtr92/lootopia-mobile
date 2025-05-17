@@ -24,7 +24,11 @@
     "Hunts": {
       "title": "Liste de mes chasses",
       "loading": "Chargement de vos chasses...",
-      "search": "Rechercher une chasse..."
+      "search": "Rechercher une chasse...",
+      "info": {
+        "started": "En cours",
+        "commingSoon": "À venir"
+      }
     },
     "Users": {
       "Profile": {

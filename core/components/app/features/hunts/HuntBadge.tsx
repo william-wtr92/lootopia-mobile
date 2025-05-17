@@ -14,10 +14,11 @@ const HuntBadge = () => {
     <View className="flex-row items-center bg-primaryBg/80 dark:bg-yellow-200/ px-5 py-1 rounded-r-full shadow-sm">
       <Map color="#4A0E4E" size={24} />
 
-      <View className="ml-2">
+      <View className="ml-2 max-w-[160px]">
         <Text
           numberOfLines={1}
-          className="text-xl font-semibold text-primary max-w-32"
+          className="text-xl font-semibold text-primary"
+          ellipsizeMode="tail"
         >
           {huntName}
         </Text>
