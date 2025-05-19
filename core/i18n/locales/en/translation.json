@@ -24,7 +24,11 @@
     "Hunts": {
       "title": "My Hunts List",
       "loading": "Loading your hunts...",
-      "search": "Search for a hunt..."
+      "search": "Search for a hunt...",
+      "info": {
+        "started": "Started",
+        "commingSoon": "Coming Soon"
+      }
     },
     "Users": {
       "Profile": {
